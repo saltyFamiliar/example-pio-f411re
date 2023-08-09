@@ -36,14 +36,14 @@ int main(void) {
   HAL_GPIO_TogglePin(LED_GPIO_PORT, LED_PIN);
 
   while (1) {
-    // if (!HAL_GPIO_ReadPin(BUTTON_GPIO_PORT, BUTTON_PIN)) {
     if (BUTTON_PRESSED) {
       HAL_GPIO_TogglePin(LED_GPIO_PORT, LED_PIN);
 
-      // while (!HAL_GPIO_ReadPin(BUTTON_GPIO_PORT, BUTTON_PIN)) {
+      // cycle here until button is unpressed so LED doesn't toggle multiple times
       while (BUTTON_PRESSED) {
         continue;
       }
+
     }
   }
 }
